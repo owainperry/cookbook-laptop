@@ -7,7 +7,17 @@
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe "standard_tools"
+platform = node['platform_family']
 
-include_recipe "infrastructure_development"
+case platform
+	when 'rhel'	
+		# not using linux at the moment. 
+	when 'windows'
+		#include_recipe "bootstrap::windows"
+		include_recipe "owain_laptop::standard_tools"
+		include_recipe "owain_laptop::infrastructure_development"
+	else
+		Chef::Log.info "Not supported on this platform #{platform}"
+end
+
 
