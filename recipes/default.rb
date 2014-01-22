@@ -2,13 +2,12 @@
 # Cookbook Name:: owain_laptop
 # Recipe:: default
 #
-# Copyright (C) 2014 YOUR_NAME
+# Copyright (C) 2014 Owain Perry
 # 
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe "chocolatey"
+include_recipe "standard_tools"
 
-%w{ sysinternals wget}.each do |pack|
-  chocolatey pack
-end
+include_recipe "infrastructure_development"
+
