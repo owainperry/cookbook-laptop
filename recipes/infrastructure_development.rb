@@ -7,8 +7,15 @@ include_recipe "chocolatey"
 end
 
 #Install vagrant windows plugin
-vagrant_windows_install_file = "c:\\windows\\vagrant-windows-installed.txt"
+vagrant_windows_install_file = "c:\\Windows\\vagrant-windows-installed.txt"
 execute "vagrant-windows" do
-    command "vagrant plugin install vagrant-windows > #{{vagrant_windows_install_file}}"
+    command "vagrant plugin install vagrant-windows > #{vagrant_windows_install_file}"
     not_if { ::File.exists?(vagrant_windows_install_file)}
 end
+
+vagrant_berkshelf_install_file = "c:\\Windows\\vagrant-windows-installed.txt"
+execute "vagrant-berkshelf" do
+    command "vagrant plugin install vagrant-berkshelf > #{vagrant_berkshelf_install_file}"
+    not_if { ::File.exists?(vagrant_berkshelf_install_file)}
+end
+
